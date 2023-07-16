@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="TraerCiudades.getCities" CodeBehind="Get.svc.cs" %>
