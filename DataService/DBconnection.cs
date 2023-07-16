@@ -9,11 +9,10 @@ namespace DataService
 {
     class DBConnection
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
             DBConnection db = new DBConnection();
             db.query();
-            db.querySave();
             Console.ReadKey();
         }
 
@@ -30,11 +29,6 @@ namespace DataService
             {
                 Console.WriteLine(c);
             }
-        }
-        private void querySave()
-        {
-            AlumnoG ss = new AlumnoG();
-            ss.SaveData("Ronald", "Ventura", "rventurave@unsa.edu.pe", "Masculino", "Jose avelardo quiñones", "Arequipa", "Mensaje");
         }
     }
 }
