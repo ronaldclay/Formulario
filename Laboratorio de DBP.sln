@@ -3,13 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laboratorio de DBP", "Laboratorio de DBP\Laboratorio de DBP.csproj", "{E72127AF-9129-4E73-A5A9-350D8EBDEF71}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataService", "DataService\DataService.csproj", "{BE41546F-E26F-4B27-9E00-4C7CBBB2CAE9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TraerCiudades", "TraerCiudades\TraerCiudades.csproj", "{32F05316-1CBC-4888-9D9C-8EBCE400D646}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicioG", "ServicioG\ServicioG.csproj", "{F52F7EB4-0DB4-4E2E-85A0-3169618DC171}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Formulario", "Laboratorio de DBP\Formulario.csproj", "{E72127AF-9129-4E73-A5A9-350D8EBDEF71}"
+	ProjectSection(ProjectDependencies) = postProject
+		{32F05316-1CBC-4888-9D9C-8EBCE400D646} = {32F05316-1CBC-4888-9D9C-8EBCE400D646}
+		{F52F7EB4-0DB4-4E2E-85A0-3169618DC171} = {F52F7EB4-0DB4-4E2E-85A0-3169618DC171}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +21,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E72127AF-9129-4E73-A5A9-350D8EBDEF71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E72127AF-9129-4E73-A5A9-350D8EBDEF71}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E72127AF-9129-4E73-A5A9-350D8EBDEF71}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E72127AF-9129-4E73-A5A9-350D8EBDEF71}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BE41546F-E26F-4B27-9E00-4C7CBBB2CAE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BE41546F-E26F-4B27-9E00-4C7CBBB2CAE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE41546F-E26F-4B27-9E00-4C7CBBB2CAE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +33,10 @@ Global
 		{F52F7EB4-0DB4-4E2E-85A0-3169618DC171}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F52F7EB4-0DB4-4E2E-85A0-3169618DC171}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F52F7EB4-0DB4-4E2E-85A0-3169618DC171}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E72127AF-9129-4E73-A5A9-350D8EBDEF71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E72127AF-9129-4E73-A5A9-350D8EBDEF71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E72127AF-9129-4E73-A5A9-350D8EBDEF71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E72127AF-9129-4E73-A5A9-350D8EBDEF71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

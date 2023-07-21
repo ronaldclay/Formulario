@@ -43,12 +43,6 @@
     <Compile Include="ICiudades.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Laboratorio de DBP\Laboratorio de DBP.csproj">
-      <Project>{e72127af-9129-4e73-a5a9-350d8ebdef71}</Project>
-      <Name>Laboratorio de DBP</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
   </ItemGroup>

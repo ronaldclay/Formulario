@@ -13,6 +13,7 @@ namespace DataService
         {
             DBConnection db = new DBConnection();
             db.query();
+            db.querySave();
             Console.ReadKey();
         }
 
@@ -29,6 +30,10 @@ namespace DataService
             {
                 Console.WriteLine(c);
             }
+        }
+        private void querySave()
+        {
+            AlumnoG ss = new AlumnoG();
         }
     }
 }

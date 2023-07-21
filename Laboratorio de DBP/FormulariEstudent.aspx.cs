@@ -100,7 +100,20 @@ namespace Laboratorio_de_DBP
                 literal.Text = "<p class='mb-1'>" + tags[i] + info[i] + "</p>";
                 Mostrar.Controls.Add(literal);
             }
+            HttpCookie cookie = new HttpCookie("Cookies");
+            cookie.Values["Sexo"] = Sexo;
+            cookie.Values["Ciudad"] = City;
+            cookie.HttpOnly = true;
+            Response.Cookies.Add(cookie);
+            createSession(Name, LastName);
+            Response.Redirect("Auxiliar");
 
+        }
+
+        private void createSession(String nombre, String apellido)
+        {
+            Session["Nombre"] = nombre;
+            Session["Apellido"] = apellido;
         }
     }
 }
