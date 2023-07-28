@@ -73,44 +73,20 @@ namespace Laboratorio_de_DBP
             {
                 Sexo="Femenino";
             }
-            string[] info = new string[7] { Name, LastName, Mail, Sexo, Address, City, Message };
-            string[] tags = { "Nombre: ", "Apellido: ", "Correo: ", "Sexo: ", "Direccion: ", "Ciudad: ", "Requerimiento: " };
-
-            // En esta parte llamaraemos al servicio para almacenar los datos
+            Mostrar.Text="Nombre: "+ Name + "</br>Apellido: "+LastName+ "</br>Sexo: "+Sexo+"</br>Email: "+Mail+"</br>Direccion: "+Address+"</br>Ciudad: "+City+"</br>Requirimiento: "+Message;
             Guardar(Name, LastName, Mail, Sexo, Address, City, Message);
 
-            for (int i = 0; i < info.Length; i++)
-            {
-                if (info[i] == "")
-                {
-                    List<string> infoList = new List<string>(info);
-                    infoList.RemoveAt(i);
-                    info = infoList.ToArray();
-
-                    List<string> tagList = new List<string>(tags);
-                    tagList.RemoveAt(i);
-                    tags = tagList.ToArray();
-                }
-
-            }
-
-            for (int i = 0; i < info.Length; i++)
-            {
-                Literal literal = new Literal();
-                literal.Text = "<p class='mb-1'>" + tags[i] + info[i] + "</p>";
-                Mostrar.Controls.Add(literal);
-            }
             HttpCookie cookie = new HttpCookie("Cookies");
             cookie.Values["Sexo"] = Sexo;
             cookie.Values["Ciudad"] = City;
             cookie.HttpOnly = true;
             Response.Cookies.Add(cookie);
-            createSession(Name, LastName);
+            Secion(Name, LastName);
             Response.Redirect("Auxiliar");
 
         }
 
-        private void createSession(String nombre, String apellido)
+        private void Secion(String nombre, String apellido)
         {
             Session["Nombre"] = nombre;
             Session["Apellido"] = apellido;
