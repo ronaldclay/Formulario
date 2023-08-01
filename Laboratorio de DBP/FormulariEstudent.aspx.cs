@@ -10,6 +10,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Optimization;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -30,7 +31,7 @@ namespace Laboratorio_de_DBP
                 ListItem item = new ListItem(ciudades[i], ciudades[i]);
                 ListaCiudad.Items.Add(item);
             }
-
+                
         }
         private string[] serviceCall()
         {
@@ -75,13 +76,17 @@ namespace Laboratorio_de_DBP
             }
             Mostrar.Text="Nombre: "+ Name + "</br>Apellido: "+LastName+ "</br>Sexo: "+Sexo+"</br>Email: "+Mail+"</br>Direccion: "+Address+"</br>Ciudad: "+City+"</br>Requirimiento: "+Message;
             Guardar(Name, LastName, Mail, Sexo, Address, City, Message);
-
-            HttpCookie cookie = new HttpCookie("Cookies");
-            cookie.Values["Sexo"] = Sexo;
-            cookie.Values["Ciudad"] = City;
-            cookie.HttpOnly = true;
-            Response.Cookies.Add(cookie);
             Secion(Name, LastName);
+            cook(Sexo,City);
+        }
+        private void cook(string Sexo,string City)
+        {
+            HttpCookie cookie = new HttpCookie("sexo",Sexo);
+            HttpCookie cookie2 = new HttpCookie("ciudad",City);
+            Response.Cookies.Add(cookie);
+            Response.Cookies.Add(cookie2);
+         
+            
             Response.Redirect("Auxiliar");
 
         }

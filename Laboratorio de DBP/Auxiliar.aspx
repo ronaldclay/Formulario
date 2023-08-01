@@ -7,8 +7,25 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="Content/bootstrap.css" rel="stylesheet" />
     <title>Cookies Alumno</title>
-    <script defer type="text/javascript" src="/Scripts/Forms/formStudent.js"></script>
-    <script defer src="/Scripts/bootstrap.js"></script>
+    
+    <script  src="/Scripts/bootstrap.js"></script>
+    <script type="text/javascript">
+        function ButtonMostrar() {
+
+            let cookies = document.cookie.split(';');
+            let valor1, valor2;
+            for (let i = 0; i < cookies.length; i++) {
+                let cookie = cookies[i].trim();
+                if (cookie.startsWith('sexo=')) {
+                    valor1 = cookie.substring('sexo='.length);
+                } else if (cookie.startsWith('ciudad=')) {
+                    valor2 = cookie.substring('ciudad='.length);
+                }
+            }
+            document.getElementById("areaCookie").value = "UserInfo:\n Sexo: " + valor1 + "\nCiudad: " + valor2;
+            return false;
+        }
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -28,17 +45,35 @@
                     <asp:Label ID="Apellido" runat="server" Text="Apellido" CssClass="form-label"></asp:Label>
                 </div>
             </div>
-            
+
             <div class="mb-2">
-                <asp:Button ID="ButtonCookie" class="btn btn-dark" UseSubmitBehavior="false" runat="server" Text="Mostrar Cookie" OnClick="ButtonCookie_Click"/>
+                <asp:Button ID="ButtonCookie" class="btn btn-dark" runat="server" Text="Mostrar Cookie" OnClientClick="return ButtonMostrar();" />
+            </div>
+            <div class="mb-2">
+                <asp:Button ID="Button1" class="btn btn-dark" runat="server" Text="Cerrar Sesion" OnClick="ButtonCerrar" />
             </div>
             <div class="mb-2 row">
                 <div class="col-md-6">
-                    <asp:TextBox ID="Cookie" runat="server" Rows="4" class="form-control" placeholder="Requerimiento"></asp:TextBox>
+                    <asp:TextBox ID="areaCookie" runat="server" TextMode="MultiLine" Rows="4" class="form-control" placeholder="Requerimiento"></asp:TextBox>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="cols-sm-2">
+                    <asp:Button ID="ButtonAjax" runat="server" Text="Ajax"
+                        OnClientClick="return callAjax();" class="btn btn-success btn-lg" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group row mt-3">
+                    <div class="col-sm-9">
+                        <div class="form-floating row mt-3">
+                            <asp:TextBox ID="TextBoxAjax" runat="server" class="form-control"
+                                Style="visibility: hidden"></asp:TextBox>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
     </form>
 </body>
 </html>

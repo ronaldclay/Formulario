@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+
 
 namespace Laboratorio_de_DBP
 {
@@ -12,8 +14,8 @@ namespace Laboratorio_de_DBP
         protected void Page_Load(object sender, EventArgs e)
         {
             loadSession();
-            deleteSessions();
         }
+        
         private void loadSession()
         {
             String nombre = (String)(Session["Nombre"]);
@@ -29,17 +31,10 @@ namespace Laboratorio_de_DBP
             Session.Abandon();
         }
 
-        protected void ButtonCookie_Click(object sender, EventArgs e)
+        protected void ButtonCerrar(object sender, EventArgs e)
         {
-            HttpCookie cookie = Request.Cookies["Cookies"];
-            string sexo, ciudad;
-            if (cookie != null)
-            {
-                sexo = cookie.Values["sexo"];
-                ciudad = cookie.Values["ciudad"];
-                string informacion = $"Sexo: {sexo}, Ciudad: {ciudad}";
-                Cookie.Text = informacion;
-            }
+            deleteSessions();
+            Response.Redirect("FormulariEstudent");
         }
     }
 }

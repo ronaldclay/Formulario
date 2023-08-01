@@ -83,7 +83,7 @@
                 <!-- Limpiar -->
                 <asp:Button UseSubmitBehavior="false" runat="server" class="btn btn-warning" value="button" ID="botonLimpar" Text="Limpiar" OnClientClick="limpiar()"></asp:Button>
                 <!-- enviar -->
-                <asp:Button data-bs-toggle="modal" data-bs-target="#exampleModal" ID="botonEnviar" runat="server" Text="Enviar" OnClientClick="var E = enviar(); return E;" class="btn btn-primary" OnClick="ButtonEnviar_Click"></asp:Button>
+                <asp:Button UseSubmitBehavior="true" data-bs-toggle="modal" data-bs-target="#exampleModal" ID="botonEnviar" runat="server" Text="Enviar" OnClientClick="var E = enviar(); return E;" class="btn btn-primary" OnClick="ButtonEnviar_Click"></asp:Button>
 
             </div>
             <div class="text-info">

@@ -22,8 +22,7 @@ namespace DataService
                 Valor = "F";
             string SConexion = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Data;Integrated Security=True";
             string insertQuery = "INSERT INTO [dbo].[DataAlumnos] (Nombre, Apellidos, Email, Sexo, Direccion, CodeCiudad, Requerimiento) VALUES (@Nombre, @Apellidos, @Email, @Sexo, @Direccion, @CodeCiudad, @Requerimiento)";
-
-
+          
             using (SqlConnection connection = new SqlConnection(SConexion))
             {
                 using (SqlCommand command = new SqlCommand(insertQuery, connection))
@@ -41,6 +40,5 @@ namespace DataService
                 }
             }
         }
-
     }
 }
