@@ -36,5 +36,10 @@ namespace Laboratorio_de_DBP
             deleteSessions();
             Response.Redirect("FormulariEstudent");
         }
+        [WebMethod]
+        public static String getInformacion(String valor)
+        {
+            return "Desde el servidor se recibio :" + valor;
+        }
     }
 }

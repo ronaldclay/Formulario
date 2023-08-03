@@ -31,7 +31,7 @@ namespace Laboratorio_de_DBP
                 ListItem item = new ListItem(ciudades[i], ciudades[i]);
                 ListaCiudad.Items.Add(item);
             }
-                
+
         }
         private string[] serviceCall()
         {
@@ -77,16 +77,16 @@ namespace Laboratorio_de_DBP
             Mostrar.Text="Nombre: "+ Name + "</br>Apellido: "+LastName+ "</br>Sexo: "+Sexo+"</br>Email: "+Mail+"</br>Direccion: "+Address+"</br>Ciudad: "+City+"</br>Requirimiento: "+Message;
             Guardar(Name, LastName, Mail, Sexo, Address, City, Message);
             Secion(Name, LastName);
-            cook(Sexo,City);
+            cook(Sexo, City);
         }
-        private void cook(string Sexo,string City)
+        private void cook(string Sexo, string City)
         {
-            HttpCookie cookie = new HttpCookie("sexo",Sexo);
-            HttpCookie cookie2 = new HttpCookie("ciudad",City);
+            HttpCookie cookie = new HttpCookie("sexo", Sexo);
+            HttpCookie cookie2 = new HttpCookie("ciudad", City);
             Response.Cookies.Add(cookie);
             Response.Cookies.Add(cookie2);
-         
-            
+
+
             Response.Redirect("Auxiliar");
 
         }
@@ -95,6 +95,36 @@ namespace Laboratorio_de_DBP
         {
             Session["Nombre"] = nombre;
             Session["Apellido"] = apellido;
+        }
+
+        [WebMethod]
+        public static String recibirJSON(String nombre, String apellido)
+        {
+            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Data;Integrated Security=True";
+            string query = "SELECT COUNT(*) FROM DataAlumnos WHERE Nombre = @name AND Apellidos = @lastname";
+            int count = 0;
+            using (SqlConnection connection = new
+            SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query,
+                connection))
+                {
+                    command.Parameters.AddWithValue("@name", nombre);
+                    command.Parameters.AddWithValue("@lastname", apellido);
+                    connection.Open();
+                    count = (int)command.ExecuteScalar();
+                }
+            }
+            if (count>0)
+            {
+                return "0 Ya esta registrado :" + nombre + " " + apellido;
+
+            }
+            else
+            {
+                return "1 No esta registrado:" + nombre + " " + apellido;
+
+            }
         }
     }
 }

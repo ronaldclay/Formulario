@@ -9,6 +9,7 @@
     <title></title>
     <link rel="stylesheet" href="Content/bootstrap.css" />
     <script type="text/javascript" defer="defer" src="Scripts/Lab1/app.js"></script>
+    <script src="./Scripts/jquery-3.4.1.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -31,6 +32,9 @@
                 </div>
                 <div class="col-md-3">
                     <asp:TextBox class="form-control" type="text" ID="Apellido" placeholder="Apellido" runat="server"></asp:TextBox>
+                </div>
+                <div class="col-md-3" style="display: none" id="divServidor">
+                    <p id="contenidoServidor" class="form-control text-white" ></p>
                 </div>
             </div>
             <div class="row">

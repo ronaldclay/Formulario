@@ -7,9 +7,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="Content/bootstrap.css" rel="stylesheet" />
     <title>Cookies Alumno</title>
-    
-    <script  src="/Scripts/bootstrap.js"></script>
-    <script type="text/javascript">
+
+    <script src="/Scripts/bootstrap.js"></script>
+    <script src="./Scripts/jquery-3.4.1.js" defer></script>
+    <script type="text/javascript" defer>
         function ButtonMostrar() {
 
             let cookies = document.cookie.split(';');
@@ -23,6 +24,29 @@
                 }
             }
             document.getElementById("areaCookie").value = "UserInfo:\n Sexo: " + valor1 + "\nCiudad: " + valor2;
+            return false;
+
+            
+        }
+
+        function callAjax() {
+            let send = $('#TextBoxCookie').val();
+
+            $.ajax({
+                url: 'Auxiliar.aspx/getInformacion',
+                type: 'POST',
+                async: true,
+                data: '{ valor: "' + send + '" }',
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: exito
+            });
+            return false;
+        }
+        function exito(data) {
+            var returnS = data.d;
+            $('#TextBoxAjax').val(data.d);
+            $('#TextBoxAjax').css("visibility", "visible");
             return false;
         }
     </script>

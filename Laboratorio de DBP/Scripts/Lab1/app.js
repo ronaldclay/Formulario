@@ -72,3 +72,45 @@ function enviar() {
     alert(`registrado a las: ${time.toLocaleString()}`);
     return true;
 }
+
+function verifyAjax(nombre, apellido) {
+    var jsonData = {
+        nombre: nombre,
+        apellido: apellido
+    };
+    $.ajax({
+        url: 'FormulariEstudent.aspx/recibirJSON',
+        type: 'POST',
+        async: true,
+        data: JSON.stringify(jsonData),
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: exito,
+    });
+    return false;
+}
+
+function exito(data) {
+    var returnS = data.d;
+    $('#contenidoServidor').text(returnS);
+    $('#divServidor').css("display", "block");
+    $('#contenidoServidor').removeClass('bg-danger bg-success');
+    if (returnS[0] == "0") { 
+        $('#contenidoServidor').addClass('bg-danger');
+
+    } else {
+        $('#contenidoServidor').addClass('bg-success');
+    }
+    return false;
+}
+
+let nombre;
+let apellido;
+function OnInput() {
+    nombre = document.getElementById('Nombre').value;
+    apellido = document.getElementById('Apellido').value;
+    verifyAjax(nombre, apellido);
+    console.log("Nombre:", nombre);
+    console.log("Apellido:", apellido);
+}
+document.getElementById('Apellido').addEventListener('input',OnInput);
